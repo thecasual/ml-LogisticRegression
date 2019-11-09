@@ -2,17 +2,20 @@ from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import numpy as np
 
+#
+# Credit : https://www.ritchieng.com/pandas-scikit-learn/
+#
 
 feature_cols = ['Pclass', 'Parch']
 
-file = "C:\\Users\\thecasual\\Downloads\\data.csv"
+file = "data.csv"
 train = pd.read_csv(file)
 X = train.loc[:, feature_cols]
 y = train.Survived
 
 logreg = LogisticRegression()
 logreg.fit(X, y)
-file2 = "C:\\Users\\thecasual\\Downloads\\data_train.csv"
+file2 = "data_train.csv"
 test = pd.read_csv(file2)
 X_new = test.loc[:, feature_cols]
 new_pred_class = logreg.predict(X_new)
